@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Function scope example</title>
+  </head>
+  <body>
+    <script>
+      function myFunc(theObject) {
+        theObject = { make: "Ford", model: "Focus", year: 2006 };
+        console.log(theObject.make);
+      }
+
+      var mycar = { make: "Honda", model: "Accord", year: 1998 },
+        x,
+        y;
+
+      myFunc(mycar);
+      y = mycar.make; // y 的值還是 "Honda"
+
+      //  console.log(y);
+    </script>
+  </body>
+</html>
