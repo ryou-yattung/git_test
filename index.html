@@ -1,27 +1,12 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Function scope example</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
   </head>
   <body>
-    <h1>ddd</h1>
-    <h2>sss</h2>
-    <script>
-      function myFunc(theObject) {
-        theObject = { make: "Ford", model: "Focus", year: 2006 };
-        console.log(theObject.make);
-      }
-
-      var mycar = { make: "Honda", model: "Accord", year: 1998 },
-        x,
-        y;
-
-      myFunc(mycar);
-      y = mycar.make; // y 的值還是 "Honda"
-
-      //  console.log(y);
-    </script>
+    <script src="js/function.js"></script>
   </body>
 </html>
