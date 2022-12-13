@@ -4,7 +4,9 @@ function setArrOne() {
 
   return () => {
     for (let i = 0; i < array.length; i++) {
-      setTimeout(() => console.log("I am at index" + i), 3000);
+      (function (closureI) {
+        setTimeout(() => console.log("I am at index" + array[i]), 3000);
+      })(i);
     }
   };
 }
