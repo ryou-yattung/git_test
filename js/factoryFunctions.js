@@ -1,22 +1,25 @@
-const elf = {
-  name: "Orwell",
-  weapon: "bow",
+// const elf = {
+//   name: "Orwell",
+//   weapon: "bow",
+//   attack() {
+//     console.log("attack with " + this.weapon);
+//   },
+// };
+
+// elf.attack();
+
+// factory functions
+const elfFunctions = {
   attack() {
     console.log("attack with " + this.weapon);
   },
 };
 
-elf.attack();
-
-// factory functions
 function createElf(name, weapon) {
-  return {
-    name,
-    weapon,
-    attack() {
-      console.log("attack with " + this.weapon);
-    },
-  };
+  let newElf = Object.create(elfFunctions);
+  newElf.name = name;
+  newElf.weapon = weapon;
+  return newElf;
 }
 
 const tony = createElf("tony", "stones");
