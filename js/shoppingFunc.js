@@ -1,18 +1,42 @@
 const user = {
-  name: "TTT",
+  name: "Tony",
   active: true,
   cart: [],
   purchases: [],
 };
 
-function purchaseItem (user,item){
-  return Object.assign({},user ,{purchases:item})
+const compose =
+  (f, g) =>
+  (...args) =>
+    f(g(...args));
+
+purchaseItem(addItemCart, applyTaxToItems, buyItem, emptyItem);
+
+function purchaseItem(...fns) {
+  fns.reduce(compose);
 }
 
-function itemToCart()
+function addItemCart(user, item) {
+  const updateCart = user.cart.concat([item]);
+  return Object.assign({}, user, { cart: updateCart });
+}
 
-function applyTaxToItems()
+function applyTaxToItems(user) {
+  const { cart } = user;
+  const taxRate = 1.03;
+  const updateCart = cart.map((item) => {
+    return {
+      name: item.name,
+      price: item.price * taxRate,
+    };
+  });
+  return Object.assign({}, user, { cart: updateCart });
+}
 
-function buyItem()
+function buyItem(user) {
+  return user;
+}
 
-function empyCart()
+function emptyItem(user) {
+  return user;
+}
