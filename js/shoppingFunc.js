@@ -10,27 +10,20 @@ const compose =
   (...args) =>
     f(g(...args));
 
-purchaseItem(addItemCart, applyTaxToItems, buyItem, emptyItem);
+console.log();
+purchaseItem(addItemCart, applyTaxToItems, buyItem, emptyItem)(user, { name: "laptop", price: 2000 });
 
 function purchaseItem(...fns) {
-  fns.reduce(compose);
+  return fns.reduce(compose);
 }
 
 function addItemCart(user, item) {
-  const updateCart = user.cart.concat([item]);
+  const updateCart = user.cart.concat(item);
   return Object.assign({}, user, { cart: updateCart });
 }
 
 function applyTaxToItems(user) {
-  const { cart } = user;
-  const taxRate = 1.03;
-  const updateCart = cart.map((item) => {
-    return {
-      name: item.name,
-      price: item.price * taxRate,
-    };
-  });
-  return Object.assign({}, user, { cart: updateCart });
+  return user;
 }
 
 function buyItem(user) {
@@ -40,3 +33,4 @@ function buyItem(user) {
 function emptyItem(user) {
   return user;
 }
+console.log(user.cart);
